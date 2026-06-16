@@ -4,8 +4,335 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>tigger esportes.</title>
+    <style>
+        /* ==========================================================================
+        1. CONFIGURAÇÕES GERAIS E RESETS
+           ========================================================================== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f4f4f7;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.3s ease;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* ==========================================================================
+        2. CABEÇALHO (HEADER)
+           ========================================================================== */
+        #header {
+            background-color: #1a1a1a;
+            color: #fff;
+            padding: 20px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        #Logo h1 {
+            font-size: 1.8rem;
+            font-weight: 800;
+            text-transform: lowercase;
+            letter-spacing: -1px;
+            color: #ff5500; /* Laranja esportivo */
+        }
+
+        #nav ul {
+            display: flex;
+            gap: 25px;
+        }
+
+        #nav a {
+            font-weight: 600;
+            font-size: 1rem;
+            color: #ddd;
+        }
+
+        #nav a:hover {
+            color: #ff5500;
+        }
+
+        /* ==========================================================================
+        3. CONTEÚDO PRINCIPAL (MAIN & SECTIONS)
+           ========================================================================== */
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        section {
+            margin-bottom: 40px;
+            background: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        section h2, section h1 {
+            font-size: 1.8rem;
+            color: #1a1a1a;
+            margin-bottom: 25px;
+            border-left: 5px solid #ff5500;
+            padding-left: 10px;
+        }
+
+        /* Categorias */
+        #categorias ul {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        #categorias ul li {
+            background: #1a1a1a;
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-weight: 500;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+        }
+
+        /* Produtos em Destaque (Grid layout) */
+        .produtos-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        article {
+            background: #fff;
+            border: 1px solid #eee;
+            border-radius: 8px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        article:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        article h3 {
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            text-transform: capitalize;
+            color: #222;
+        }
+
+        article img {
+            object-fit: contain;
+            margin-bottom: 15px;
+            border-radius: 4px;
+        }
+
+        article p {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 15px;
+            flex-grow: 1;
+        }
+
+        .preco {
+            font-style: normal;
+            font-weight: 700;
+            font-size: 1.4rem;
+            color: #ff5500;
+            display: block;
+            margin-top: 10px;
+            margin-bottom: 15px;
+        }
+
+        /* Botão Adicionar ao Carrinho */
+        .btn-carrinho {
+            background-color: #ff5500;
+            color: #fff;
+            border: none;
+            padding: 12px 20px;
+            font-size: 0.95rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            border-radius: 4px;
+            width: 100%;
+            cursor: pointer;
+            transition: background-color 0.2s ease, transform 0.1s ease;
+        }
+
+        .btn-carrinho:hover {
+            background-color: #1a1a1a;
+        }
+
+        .btn-carrinho:active {
+            transform: scale(0.98);
+        }
+
+        /* Tabela de Serviços */
+        #servicos table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+            background: #fff;
+        }
+
+        #servicos th, #servicos td {
+            padding: 12px 15px;
+            text-align: left;
+            border: 1px solid #ddd;
+        }
+
+        #servicos th {
+            background-color: #1a1a1a;
+            color: #fff;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+        }
+
+        #servicos tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+
+        /* ==========================================================================
+        4. RODAPÉ (FOOTER)
+           ========================================================================== */
+        #footer {
+            background-color: #1a1a1a;
+            color: #ccc;
+            padding: 50px 5% 20px 5%;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 40px;
+            font-size: 0.9rem;
+            margin-top: 60px;
+        }
+
+        #footer h2 {
+            color: #fff;
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        #footer h3 {
+            color: #ff5500;
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+
+        #footer nav ul li {
+            margin-bottom: 8px;
+        }
+
+        #footer nav a:hover {
+            color: #fff;
+            padding-left: 5px;
+        }
+
+        /* Redes Sociais e Newsletter */
+        .social-icons {
+            display: flex;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .social-icons a img {
+            width: 40px;
+            transition: transform 0.2s;
+        }
+
+        .social-icons a:hover img {
+            transform: scale(1.1);
+        }
+
+        #footer form {
+            display: flex;
+            margin-top: 10px;
+        }
+
+        #footer input[type="email"] {
+            padding: 10px;
+            border: none;
+            border-radius: 4px 0 0 4px;
+            flex-grow: 1;
+            outline: none;
+        }
+
+        #footer button {
+            background-color: #ff5500;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 0 4px 4px 0;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+
+        #footer button:hover {
+            background-color: #e04a00;
+        }
+
+        /* Direitos Autorais */
+        .copyright {
+            grid-column: 1 / -1;
+            text-align: center;
+            border-top: 1px solid #333;
+            padding-top: 20px;
+            margin-top: 20px;
+            color: #777;
+            font-size: 0.8rem;
+        }
+
+        /* =======================================
+           5. RESPONSIVIDADE (MOBILE)
+           ========================================================================== */
+        @media (max-width: 768px) {
+            #header {
+                flex-direction: column;
+                gap: 15px;
+                text-align: center;
+            }
+
+            #nav ul {
+                gap: 15px;
+            }
+
+            section {
+                padding: 20px;
+            }
+        }
+    </style>
 </head>
 <body>
+
 <!-- Cabeçalho do Site --> 
 <header id="header">
     <div id="Logo">
@@ -13,149 +340,122 @@
     </div>
     <nav id="nav">
         <ul>
-            <li>
-                <a href="#categorias">Categorias</a>
-            </li>
-            <li>
-                <a href="#produtos">Produtos</a>
-            </li>
-            <li>
-                <a href="#servicos">Serviços</a>
-            </li>
-            <li>
-                <a href="cadastro.html">Cadastro</a>
-            </li>
+            <li><a href="#categorias">Categorias</a></li>
+            <li><a href="#produtos">Produtos</a></li>
+            <li><a href="#servicos">Serviços</a></li>
+            <li><a href="cadastro.html">Cadastro</a></li>
         </ul>
     </nav>
 </header>
 
-<!--Conteúdo Principal-->
+<!-- Conteúdo Principal -->
 <main>
-    <br>
     <section id="categorias">
         <h2>Nossas Categorias.</h2>
         <ul>
-            <li>.</li>
             <li>roupas para esportes</li>
             <li>equipamentos esportivos</li>
         </ul>
     </section>
 
     <section id="produtos">
-        <h2>Protudos em destaque.</h2>
-        <article>
-            <h3>tenis de basquete</h3>
-            <img src="Tenis-Nike-Kyrie-7-Masculino-Preto.webp" alt="Nike Kyrie 7"
-            width="200" height="200">
-            <p>Domine as quadras com o tênis assinado por uma das maiores estrelas da NBA, Kyrie. <br> O Nike Kyrie 7 combina estilo icônico com tecnologia de ponta para quem busca agilidade e controle total nos movimentos.</p>
-            <p><em>Preço: R$ 849,99 </em></p>
-        </article>
-        <br>
-        <article>
-            <h3>bola wilson de basquete </h3>
-            <img src="81Wry10rGaL._AC_SX679_.jpg" alt="imagem da bola de basquete wilson"
-            width="200" height="200">
-            <p>Leve a experiência das quadras universitárias americanas para o seu jogo com a Wilson NCAA Official Game Ball. <br>Desenvolvida com as tecnologias mais avançadas da Wilson, esta bola é a escolha oficial dos maiores torneios da <br>NCAA, garantindo performance de nível profissional.</p>
-            <p><em>Preço: R$ 235,80.</em></p>
-        </article>
+        <h2>Produtos em destaque.</h2>
+        <div class="produtos-container">
+            <article>
+                <h3>tênis de basquete</h3>
+                <img src="Tenis-Nike-Kyrie-7-Masculino-Preto.webp" alt="Nike Kyrie 7" width="200" height="200">
+                <p>Domine as quadras com o tênis assinado por uma das maiores estrelas da NBA, Kyrie. O Nike Kyrie 7 combina estilo icônico com tecnologia de ponta para quem busca agilidade e controle total nos movimentos.</p>
+                <p class="preco">R$ 849,99</p>
+                <button type="button" class="btn-carrinho">Adicionar ao carrinho</button>
+            </article>
+
+            <article>
+                <h3>bola wilson de basquete</h3>
+                <img src="81Wry10rGaL._AC_SX679_.jpg" alt="imagem da bola de basquete wilson" width="200" height="200">
+                <p>Leve a experiência das quadras universitárias americanas para o seu jogo com a Wilson NCAA Official Game Ball. Desenvolvida com as tecnologias mais avançadas da Wilson, esta bola é a escolha oficial dos maiores torneios da NCAA, garantindo performance de nível profissional.</p>
+                <p class="preco">R$ 235,80</p>
+                <button type="button" class="btn-carrinho">Adicionar ao carrinho</button>
+            </article>
+        </div>
     </section>
 
     <section id="servicos">
-        <h1>Serviços disponiveis</h1>
-        <table border="5">
+        <h1>Serviços disponíveis</h1>
+        <table>
             <thead>
                 <tr>
-                    <th>serviços</th>
+                    <th>Serviços</th>
                     <th>Preços</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <td>reforma de tenis ou chuteira</td>
+                    <td>Reforma de tênis ou chuteira</td>
                     <td>R$150 a R$200</td>
                 </tr>
-
                 <tr>
-                    <td>reforma de bolas</td>
-                    <td>R$50 a R$150</td>>
+                    <td>Reforma de bolas</td>
+                    <td>R$50 a R$150</td>
                 </tr>
             </tbody>
         </table>
     </section>
 </main>
 
-<!-- Rodapé do Site-->
+<!-- Rodapé do Site -->
 <footer id="footer">
     <div>
-        <br>
         <h2>tigger esportes</h2>
-        <p>Desde 2026 vivendo os esportes</p>
+        <p>Desde 2026 vivendo os esportes.</p>
     </div>
     
-<nav id="nav">
+    <nav>
+        <h3>Navegação</h3>
         <ul>
-            <li>
-                <a href="#categorias">Categorias</a>
-            </li>
-            <li>
-                <a href="#produtos">Produtos</a>
-            </li>
-            <li>
-                <a href="#cadastro.html">Serviços</a>
-            </li>
-            <li>
-                <a href="#cadastro.html">Cadastro</a>
-            </li>
+            <li><a href="#categorias">Categorias</a></li>
+            <li><a href="#produtos">Produtos</a></li>
+            <li><a href="#servicos">Serviços</a></li>
+            <li><a href="cadastro.html">Cadastro</a></li>
         </ul>
     </nav>
 
     <nav>
         <h3>Informações</h3>
         <ul>
-        <li>
-            <a href="#">termos de uso</a>
-        </li>
-        <li>
-            <a href="#">politica de privacidade</a>
-        </li>
-        <li>
-            <a href="#">trocas e devoluções</a>
-        </li>
+            <li><a href="#">Termos de uso</a></li>
+            <li><a href="#">Política de privacidade</a></li>
+            <li><a href="#">Trocas e devoluções</a></li>
         </ul>
     </nav>
 
     <div>
         <h3>Siga-nos</h3>
-            </div>
+        <div class="social-icons">
             <a href="#">
-                <img src="icons8-instagram-logo-48.png" alt="Imagem do Instagram" width="60">
+                <img src="icons8-instagram-logo-48.png" alt="Imagem do Instagram">
             </a>
             <a href="#">
-                <img src="icons8-facebook-logo-48.png" alt="imagem do icons8-facebook-logo-48" width="60">
+                <img src="icons8-facebook-logo-48.png" alt="Imagem do Facebook">
             </a>
             <a href="#">
-                <img src="icons8-whatsapp-logo-48.png" alt="Imagem do Whatsapp" width="60"> 
+                <img src="icons8-whatsapp-logo-48.png" alt="Imagem do Whatsapp"> 
             </a>
         </div>
     </div>
     
     <div>
         <h3>Newsletter</h3>
-        <p>
-            Receba promoções exclusivas no seu e-mail:
-        </p>
+        <p>Receba promoções exclusivas no seu e-mail:</p>
         <form>
-            <input type="email" name="email" id="email" placeholder="Digite seu e-mail">
+            <input type="email" name="email" id="email" placeholder="Digite seu e-mail" required>
             <button type="submit">Assinar.</button>
         </form>
     </div>
 
-    <div>
-        <p>
-            Copyrigth &copy; 2026 tigger esportes - Todos os Direitos Reservados. Site
-        Desenvolvido por Ricardo Medeiros Francisco
-        </p>
+    <div class="copyright">
+        <p>Copyright &copy; 2026 tigger esportes - Todos os Direitos Reservados. <br> Site Desenvolvido por Ricardo Medeiros Francisco</p>
     </div>
 </footer>
+
 </body>
 </html>
