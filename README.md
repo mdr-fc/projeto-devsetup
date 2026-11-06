@@ -1,3 +1,3 @@
 # projeto-devsetup
 
-Projeto publicado coom Github Pages
+Projeto publicado com GitHub Pages.
